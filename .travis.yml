@@ -11,3 +11,4 @@ script:
   - bundle exec fpm-cook -t deb
 after_success:
   - package_cloud push miketheman/iperf3/ubuntu/precise /home/travis/build/miketheman/iperf3-package/pkg/iperf3_*_amd64.deb
+  - package_cloud push miketheman/iperf3/ubuntu/trusty /home/travis/build/miketheman/iperf3-package/pkg/iperf3_*_amd64.deb
