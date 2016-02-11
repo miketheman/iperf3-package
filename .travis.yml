@@ -8,4 +8,4 @@ before_install:
   - gem install bundler
   - gem install package_cloud
 script:
-  - fpm-cook -t deb
+  - bundle exec fpm-cook -t deb
