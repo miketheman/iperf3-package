@@ -9,3 +9,5 @@ before_install:
   - gem install package_cloud
 script:
   - bundle exec fpm-cook -t deb
+after_success:
+  - package_cloud push miketheman/iperf3/ubuntu/precise /home/travis/build/miketheman/iperf3-package/pkg/iperf3_*_amd64.deb
