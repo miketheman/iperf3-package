@@ -3,12 +3,19 @@ language: ruby
 cache: bundler
 rvm:
   - 2.3.0
+addons:
+  apt:
+    packages:
+    - rpm
 before_install:
   - gem update --system
   - gem install bundler
   - gem install package_cloud
 script:
   - bundle exec fpm-cook -t deb
+  - bundle exec fpm-cook -t rpm
 after_success:
   - package_cloud push miketheman/iperf3/ubuntu/precise /home/travis/build/miketheman/iperf3-package/pkg/iperf3_*_amd64.deb
   - package_cloud push miketheman/iperf3/ubuntu/trusty /home/travis/build/miketheman/iperf3-package/pkg/iperf3_*_amd64.deb
+  - package_cloud push miketheman/iperf3/el/6 /home/travis/build/miketheman/iperf3-package/pkg/iperf3-*.x86_64.rpm
+  - package_cloud push miketheman/iperf3/el/7 /home/travis/build/miketheman/iperf3-package/pkg/iperf3-*.x86_64.rpm
